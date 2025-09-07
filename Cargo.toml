@@ -1,0 +1,12 @@
+[package]
+name = "nu-plugin-geospatial"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+nu-plugin = "0.107.0"
+nu-protocol = { version = "0.107.0", features = ["plugin"] }
+
+[dev-dependencies]
+nu-cmd-lang = "0.107.0"
+nu-plugin-test-support = "0.107.0"
