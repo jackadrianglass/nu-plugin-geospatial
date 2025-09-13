@@ -1,35 +1,31 @@
 use nu_plugin::{EngineInterface, EvaluatedCall, SimplePluginCommand};
-use nu_protocol::{Category, Example, LabeledError, Signature, SyntaxShape, Value};
+use nu_protocol::{Category, CustomValue, Example, LabeledError, Signature, SyntaxShape, Type, Value};
+use crate::geometry::GeometryCustomValue;
 
 use crate::GeoSpatialPlugin;
 
-pub struct One;
+pub struct FromWkb;
 
-impl SimplePluginCommand for One {
+impl SimplePluginCommand for FromWkb {
     type Plugin = GeoSpatialPlugin;
 
     fn name(&self) -> &str {
-        "example one"
+        "from wkb"
     }
 
     fn description(&self) -> &str {
-        "Plugin test example 1. Returns Value::Nothing"
+        "Decodes wkb into a geospatial data type"
     }
 
     fn extra_description(&self) -> &str {
-        "Extra description for example one"
+        "I'll tell you later"
     }
 
     fn signature(&self) -> Signature {
         // The signature defines the usage of the command inside Nu, and also automatically
         // generates its help page.
         Signature::build(self.name())
-            .required("a", SyntaxShape::Int, "required integer value")
-            .required("b", SyntaxShape::String, "required string value")
-            .switch("flag", "a flag for the signature", Some('f'))
-            .optional("opt", SyntaxShape::Int, "Optional number")
-            .named("named", SyntaxShape::String, "named string", Some('n'))
-            .rest("rest", SyntaxShape::String, "rest value string")
+            .required("wkb_geometry", SyntaxShape::Binary, "required integer value")
             .category(Category::Experimental)
     }
 
@@ -56,10 +52,4 @@ impl SimplePluginCommand for One {
 
         Ok(Value::nothing(call.head))
     }
-}
-
-#[test]
-fn test_examples() -> Result<(), nu_protocol::ShellError> {
-    use nu_plugin_test_support::PluginTest;
-    PluginTest::new("example", GeoSpatialPlugin.into())?.test_command_examples(&One)
 }
