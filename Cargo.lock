@@ -1215,6 +1215,7 @@ name = "nu_plugin_geospatial"
 version = "0.1.0"
 dependencies = [
  "geo",
+ "geo-traits",
  "geojson",
  "nu-cmd-lang",
  "nu-plugin",

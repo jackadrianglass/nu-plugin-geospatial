@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 geo = { version = "0.31.0", features = ["serde"] }
+geo-traits = "0.3.0"
 geojson = "0.24.2"
 nu-plugin = "0.107.0"
 nu-protocol = { version = "0.107.0", features = ["plugin"] }
